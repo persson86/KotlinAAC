@@ -17,11 +17,11 @@ class LocalDataSource : RepositoryDataSource {
             .loadAllRepos()
             .firstOrError()
             .doOnSuccess {
-                if (it.isEmpty()) throw Exception() else (Log.v("LFSP", "tudo ok!"))
+                if (it.isEmpty()) throw Exception() else (Log.v("LFSP", "Local GET Ok!"))
             }
-            .doOnError { Log.v("LFSP", "erro bd") }
+            .doOnError { Log.v("LFSP", "Local GET NOK") }
 
     override fun saveRepositories(list: List<Repo>)
-            = reposDao.insertAll(list.toMutableList())
+            = reposDao.insertRepos(list.toMutableList())
 
 }

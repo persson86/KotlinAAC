@@ -17,11 +17,15 @@ class Repository : RepositoryDataSource {
     override fun getRepos(): Single<List<Repo>>
             = localDataSource
             .getRepos()
-            .doOnSuccess { Log.v("LFSP", "SUCESSO") }
-            .doOnError { Log.v("LFSP", "ERORR") }
+            .doOnSuccess { Log.v("LFSP", "Local Su") }
+            .doOnError { Log.v("LFSP", "Local Er") }
             .onErrorResumeNext {
                 remoteDataSource.getRepos()
-                        .doOnSuccess { localDataSource.saveRepositories(it) }
+                        .doOnSuccess {
+                            localDataSource.saveRepositories(it)
+                            Log.v("LFSP", "Remote GET OK")
+                        }
+                        .doOnError { Log.v("LFSP", "Remote GET NOK") }
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
