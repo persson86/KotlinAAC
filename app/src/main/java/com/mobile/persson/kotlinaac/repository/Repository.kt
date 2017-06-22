@@ -10,12 +10,17 @@ import io.reactivex.schedulers.Schedulers
  * Created by luizfelipepersson on 21/06/17.
  */
 class Repository : RepositoryDataSource {
+
     val remoteDataSource = RemoteDataSource.Factory.create()
+    val localDataSource = LocalDataSource()
 
     override fun getRepos(): Single<List<Repo>>
-            = remoteDataSource.getRepos()
-            .doOnSuccess { Log.v("LFSP", "SUCESSO") }
-            .doOnError { Log.v("LFSP", "ERORR") }
+            = localDataSource.getRepos()
+            .onErrorResumeNext {
+                remoteDataSource.getRepos()
+                        .doOnSuccess { Log.v("LFSP", "SUCESSO") }
+                        .doOnError { Log.v("LFSP", "ERORR") }
+            }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }
