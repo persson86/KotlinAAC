@@ -30,6 +30,7 @@ task clean(type: Delete) {
 ext.buildToolsVersion = "25.0.2"
 ext.supportLibVersion = "25.4.0"
 ext.archLifecycleVersion = "1.0.0-alpha1"
+ext.archRoomVersion = "1.0.0-alpha1"
 ext.constraintLayoutVersion = "1.0.2"
 ext.retrofitVersion = "2.3.0"
 ext.rxVersion = "2.0.1"

@@ -5,7 +5,7 @@ import android.widget.TextView
 import com.mobile.persson.kotlinaac.R
 import com.mobile.persson.kotlinaac.base.BaseAdapter
 import com.mobile.persson.kotlinaac.base.BaseViewHolder
-import com.mobile.persson.kotlinaac.repository.model.Repo
+import com.mobile.persson.kotlinaac.repository.entity.Repo
 
 /**
  * Created by luizfelipepersson on 21/06/17.

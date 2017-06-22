@@ -3,9 +3,8 @@ package com.mobile.persson.kotlinaac.ui.main
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MediatorLiveData
-import android.arch.lifecycle.MutableLiveData
 import com.mobile.persson.kotlinaac.repository.Repository
-import com.mobile.persson.kotlinaac.repository.model.Repo
+import com.mobile.persson.kotlinaac.repository.entity.Repo
 
 /**
  * Created by luizfelipepersson on 21/06/17.

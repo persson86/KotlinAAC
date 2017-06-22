@@ -33,6 +33,11 @@ dependencies {
     implementation 'android.arch.lifecycle:extensions:' + rootProject.archLifecycleVersion
     kapt 'android.arch.lifecycle:compiler:' + rootProject.archLifecycleVersion
 
+    // room
+    compile 'android.arch.persistence.room:runtime:' + rootProject.archRoomVersion
+    compile 'android.arch.persistence.room:rxjava2:' + rootProject.archRoomVersion
+    kapt 'android.arch.persistence.room:compiler:' + rootProject.archRoomVersion
+
     // android support
     implementation 'com.android.support:appcompat-v7:' + rootProject.supportLibVersion
     implementation 'com.android.support:design:' + rootProject.supportLibVersion

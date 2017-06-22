@@ -2,7 +2,7 @@ package com.mobile.persson.kotlinaac.ui.main
 
 import android.arch.lifecycle.MediatorLiveData
 import com.mobile.persson.kotlinaac.repository.Repository
-import com.mobile.persson.kotlinaac.repository.model.Repo
+import com.mobile.persson.kotlinaac.repository.entity.Repo
 import io.reactivex.disposables.Disposable
 
 /**
