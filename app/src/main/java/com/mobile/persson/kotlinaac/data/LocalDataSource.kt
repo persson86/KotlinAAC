@@ -1,8 +1,8 @@
-package com.mobile.persson.kotlinaac.repository
+package com.mobile.persson.kotlinaac.data
 
-import android.util.Log
-import com.mobile.persson.kotlinaac.repository.db.DatabaseCreator
-import com.mobile.persson.kotlinaac.repository.entity.Repo
+import com.mobile.persson.kotlinaac.data.db.DatabaseCreator
+import com.mobile.persson.kotlinaac.data.entity.Repo
+import com.mobile.persson.kotlinaac.repository.RepositoryDataSource
 import io.reactivex.Single
 
 /**
@@ -17,9 +17,8 @@ class LocalDataSource : RepositoryDataSource {
             .loadAllRepos()
             .firstOrError()
             .doOnSuccess {
-                if (it.isEmpty()) throw Exception() else (Log.v("LFSP", "Local GET Ok!"))
+                if (it.isEmpty()) throw Exception()
             }
-            .doOnError { Log.v("LFSP", "Local GET NOK") }
 
     override fun saveRepositories(list: List<Repo>)
             = reposDao.insertRepos(list.toMutableList())

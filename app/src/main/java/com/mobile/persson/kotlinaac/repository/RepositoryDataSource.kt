@@ -1,6 +1,6 @@
 package com.mobile.persson.kotlinaac.repository
 
-import com.mobile.persson.kotlinaac.repository.entity.Repo
+import com.mobile.persson.kotlinaac.data.entity.Repo
 import io.reactivex.Single
 
 /**

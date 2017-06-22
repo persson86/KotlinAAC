@@ -1,7 +1,7 @@
-package com.mobile.persson.kotlinaac.repository
+package com.mobile.persson.kotlinaac.data
 
 import com.mobile.persson.kotlinaac.BuildConfig.API_END_POINT
-import com.mobile.persson.kotlinaac.repository.entity.Repo
+import com.mobile.persson.kotlinaac.data.entity.Repo
 import io.reactivex.Single
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 

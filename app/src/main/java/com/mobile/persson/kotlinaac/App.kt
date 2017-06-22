@@ -1,7 +1,7 @@
 package com.mobile.persson.kotlinaac
 
 import android.app.Application
-import com.mobile.persson.kotlinaac.repository.db.DatabaseCreator
+import com.mobile.persson.kotlinaac.data.db.DatabaseCreator
 
 /**
  * Created by luizfelipepersson on 22/06/17.

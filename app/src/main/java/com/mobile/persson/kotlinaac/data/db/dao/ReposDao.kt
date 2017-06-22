@@ -1,12 +1,11 @@
-package com.mobile.persson.kotlinaac.repository.db.dao
+package com.mobile.persson.kotlinaac.data.db.dao
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert
 import android.arch.persistence.room.OnConflictStrategy
 import android.arch.persistence.room.Query
-import com.mobile.persson.kotlinaac.repository.entity.Repo
+import com.mobile.persson.kotlinaac.data.entity.Repo
 import io.reactivex.Flowable
-
 
 
 /**
@@ -19,10 +18,6 @@ interface ReposDao {
     fun loadAllRepos(): Flowable<List<Repo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAll(products: MutableList<Repo>) : Unit
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertRepos(repo: MutableList<Repo>)
-
 
 }

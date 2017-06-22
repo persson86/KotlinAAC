@@ -1,14 +1,14 @@
 package com.mobile.persson.kotlinaac.ui.main
 
 import android.arch.lifecycle.MediatorLiveData
-import com.mobile.persson.kotlinaac.repository.Repository
-import com.mobile.persson.kotlinaac.repository.entity.Repo
+import com.mobile.persson.kotlinaac.repository.MainRepository
+import com.mobile.persson.kotlinaac.data.entity.Repo
 import io.reactivex.disposables.Disposable
 
 /**
  * Created by luizfelipepersson on 21/06/17.
  */
-class MainLiveData(repository: Repository) : MediatorLiveData<Pair<List<Repo>?, Throwable?>>() {
+class MainLiveData(repository: MainRepository) : MediatorLiveData<Pair<List<Repo>?, Throwable?>>() {
 
     private var disposable: Disposable? = null
 
