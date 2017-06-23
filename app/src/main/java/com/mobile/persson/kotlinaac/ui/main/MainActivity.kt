@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.mobile.persson.kotlinaac.R
 import com.mobile.persson.kotlinaac.base.BaseLifecycleActivity
-import com.mobile.persson.kotlinaac.repository.model.Repo
+import com.mobile.persson.kotlinaac.data.entity.Repo
 
 class MainActivity : BaseLifecycleActivity<MainViewModel>() {
 
