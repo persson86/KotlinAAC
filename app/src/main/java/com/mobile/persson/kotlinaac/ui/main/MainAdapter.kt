@@ -23,9 +23,8 @@ class MainAdapter : BaseAdapter<Repo, MainAdapter.ReposViewHolder>() {
         val tvLogin: TextView by lazy { itemView?.findViewById(R.id.tvLogin) as TextView }
 
         override fun onBind(item: Repo) {
-            tvName.text = item.name
-            tvDescription.text = item.description
-            tvLogin.text = item.owner.login
+            tvName.text = item.id.toString()
+            tvDescription.text = item.page.toString()
         }
     }
 }

@@ -12,14 +12,16 @@ import com.google.gson.annotations.SerializedName
 class Repo {
     @PrimaryKey(autoGenerate = true)
     var id: Long? = 0
-    var name: String? = ""
-    var full_name: String? = ""
-    var description: String? = ""
 
-    @Embedded
-    var owner = Owner()
+    var page: Int? = 0
+    /*@SerializedName("results")
+    lateinit var results: List<Movie>*/
+    //var total_results: Int? = 0
+    //var total_pages: Int? = 0
+
 }
 
-class Owner(
-        @SerializedName("login") var login: String? = ""
-)
+class Movie(
+        var id: String? = "",
+        var title: String? = "")
+

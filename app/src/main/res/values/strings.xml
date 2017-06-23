@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Kotlin AAC</string>
+    <string name="api_key_the_movie_db">6bbb854c2d718fdef1ea092e0f99f070</string>
 </resources>
