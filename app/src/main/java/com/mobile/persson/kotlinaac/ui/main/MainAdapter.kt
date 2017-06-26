@@ -41,7 +41,7 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
             tvName.text = movie.title
             tvDescription.text = movie.overview
 
-            itemView.setOnClickListener{Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show()}
+            itemView.setOnClickListener { Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show() }
         }
     }
 }

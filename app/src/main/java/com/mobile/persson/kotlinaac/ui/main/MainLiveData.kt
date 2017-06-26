@@ -11,6 +11,7 @@ import io.reactivex.disposables.Disposable
 class MainLiveData(repository: MainRepository) : MediatorLiveData<Pair<Repo?, Throwable?>>() {
 
     private var disposable: Disposable? = null
+
     init {
         disposable = repository
                 .getRepos2()
