@@ -1,31 +1,47 @@
 package com.mobile.persson.kotlinaac.ui.main
 
+import android.support.v7.widget.RecyclerView
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.TextView
+import android.view.ViewGroup
+import android.widget.Toast
 import com.mobile.persson.kotlinaac.R
-import com.mobile.persson.kotlinaac.base.BaseAdapter
-import com.mobile.persson.kotlinaac.base.BaseViewHolder
-import com.mobile.persson.kotlinaac.data.entity.Repo
+import com.mobile.persson.kotlinaac.data.entity.Movie
+import kotlinx.android.synthetic.main.view_item.view.*
 
 /**
  * Created by luizfelipepersson on 21/06/17.
  */
-class MainAdapter : BaseAdapter<Repo, MainAdapter.ReposViewHolder>() {
+class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
-    override fun getItemViewId(): Int = R.layout.view_item
+    private var movies: List<Movie> = ArrayList()
 
-    override fun instantiateViewHolder(view: View?): ReposViewHolder = ReposViewHolder(view)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(movies[position], position)
+    }
 
-    class ReposViewHolder(itemView: View?) : BaseViewHolder<Repo>(itemView) {
+    override fun getItemCount(): Int {
+        return movies.size
+    }
 
-        val tvName: TextView by lazy { itemView?.findViewById(R.id.tvName) as TextView }
-        val tvDescription: TextView by lazy { itemView?.findViewById(R.id.tvDescription) as TextView }
-        val tvLogin: TextView by lazy { itemView?.findViewById(R.id.tvLogin) as TextView }
+    override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
+        val root = (LayoutInflater.from(parent?.context).inflate(R.layout.view_item, parent, false))
+        return ViewHolder(root)
+    }
 
-        override fun onBind(item: Repo) {
-            tvName.text = item.name
-            tvDescription.text = item.description
-            tvLogin.text = item.owner.login
+    fun addMovies(movies: List<Movie>?) {
+        if (movies != null) {
+            this.movies = movies
+            notifyDataSetChanged()
+        }
+    }
+
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        fun bind(movie: Movie, position: Int) = with(itemView) {
+            tvName.text = movie.title
+            tvDescription.text = movie.overview
+
+            itemView.setOnClickListener{Toast.makeText(context, position.toString(), Toast.LENGTH_SHORT).show()}
         }
     }
 }

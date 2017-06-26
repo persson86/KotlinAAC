@@ -1,25 +1,23 @@
 package com.mobile.persson.kotlinaac.data.entity
 
-import android.arch.persistence.room.Embedded
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 /**
  * Created by luizfelipepersson on 21/06/17.
  */
-@Entity(tableName = "repos")
-class Repo {
-    @PrimaryKey(autoGenerate = true)
-    var id: Long? = 0
-    var name: String? = ""
-    var full_name: String? = ""
-    var description: String? = ""
-
-    @Embedded
-    var owner = Owner()
+data class Repo(var id: Int = 0) {
+    @SerializedName("results")
+    lateinit var movies: List<Movie>
 }
 
-class Owner(
-        @SerializedName("login") var login: String? = ""
+data class Owner(
+        @SerializedName("login") val login: String
 )
+
+class Movie(
+        @SerializedName("poster_path") val posterPath: String,
+        val id: String,
+        val overview: String,
+        val backdropPath: String,
+        val title: String)
+

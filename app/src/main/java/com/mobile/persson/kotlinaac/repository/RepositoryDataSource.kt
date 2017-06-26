@@ -9,6 +9,6 @@ import io.reactivex.Single
 interface RepositoryDataSource {
 
     fun getRepos(): Single<List<Repo>>
-
-    fun saveRepositories(list: List<Repo>): Unit = Unit
+    //fun saveRepositories(list: List<Repo>): Unit = Unit
+    fun getRepos2(): Single<Repo>
 }

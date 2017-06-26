@@ -17,18 +17,26 @@ class MainRepository : RepositoryDataSource {
     private val localDataSource = LocalDataSource()
 
     override fun getRepos(): Single<List<Repo>>
-            = localDataSource
+            = /*localDataSource
             .getRepos()
             .doOnSuccess { Log.v("LFSP", "Local GET OK") }
             .doOnError { Log.v("LFSP", "Local GET NOK") }
-            .onErrorResumeNext {
+            .onErrorResumeNext {*/
                 remoteDataSource.getRepos()
                         .doOnSuccess {
-                            localDataSource.saveRepositories(it)
+                            //localDataSource.saveRepositories(it)
                             Log.v("LFSP", "Remote GET OK")
                         }
                         .doOnError { Log.v("LFSP", "Remote GET NOK") }
-            }
+            //}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+
+    override fun getRepos2(): Single<Repo>
+            = remoteDataSource.getRepos2()
+            .doOnSuccess { Log.v("LFSP", "SUCESSO 2") }
+            .doOnError { Log.v("LFSP", "ERORR 2") }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+
 }

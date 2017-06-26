@@ -14,7 +14,7 @@ class MainViewModel(application: Application?) : AndroidViewModel(application) {
     private val repository = MainRepository()
     val resultLiveData = MainLiveData(repository)
     val throwableLiveData = MediatorLiveData<Throwable>()
-    val reposLiveData = MediatorLiveData<List<Repo>>()
+    val reposLiveData = MediatorLiveData<Repo>()
 
     init {
         throwableLiveData.addSource(resultLiveData) {
