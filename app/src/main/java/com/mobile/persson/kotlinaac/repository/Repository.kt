@@ -18,4 +18,11 @@ class Repository : RepositoryDataSource {
             .doOnError { Log.v("LFSP", "ERORR") }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
+
+    override fun getRepos2(): Single<Repo>
+            = remoteDataSource.getRepos2()
+            .doOnSuccess { Log.v("LFSP", "SUCESSO 2") }
+            .doOnError { Log.v("LFSP", "ERORR 2") }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
 }

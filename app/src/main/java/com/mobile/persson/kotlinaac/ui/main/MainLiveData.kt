@@ -8,13 +8,19 @@ import io.reactivex.disposables.Disposable
 /**
  * Created by luizfelipepersson on 21/06/17.
  */
-class MainLiveData(repository: Repository) : MediatorLiveData<Pair<List<Repo>?, Throwable?>>() {
+class MainLiveData(repository: Repository) : MediatorLiveData<Pair<Repo?, Throwable?>>() {
 
     private var disposable: Disposable? = null
 
-    init {
+/*    init {
         disposable = repository
                 .getRepos()
+                .subscribe { data, error -> this@MainLiveData.value = Pair(data, error) }*/
+
+
+    init {
+        disposable = repository
+                .getRepos2()
                 .subscribe { data, error -> this@MainLiveData.value = Pair(data, error) }
     }
 

@@ -8,4 +8,6 @@ import io.reactivex.Single
  */
 interface RepositoryDataSource {
     fun getRepos(): Single<List<Repo>>
+
+    fun getRepos2(): Single<Repo>
 }

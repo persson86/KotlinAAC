@@ -16,6 +16,7 @@ class MainViewModel(application: Application?) : AndroidViewModel(application) {
     val resultLiveData = MainLiveData(repository)
     val throwableLiveData = MediatorLiveData<Throwable>()
     val reposLiveData = MediatorLiveData<List<Repo>>()
+    val reposLiveData2 = MediatorLiveData<Repo>()
 
     init {
         throwableLiveData.addSource(resultLiveData) {
@@ -24,8 +25,8 @@ class MainViewModel(application: Application?) : AndroidViewModel(application) {
     }
 
     init {
-        reposLiveData.addSource(resultLiveData) {
-            it?.first?.let { reposLiveData.value = it }
+        reposLiveData2.addSource(resultLiveData) {
+            it?.first?.let { reposLiveData2.value = it }
         }
     }
 }

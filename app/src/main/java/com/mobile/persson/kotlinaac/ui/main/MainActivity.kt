@@ -30,8 +30,11 @@ class MainActivity : BaseLifecycleActivity<MainViewModel>() {
     }
 
     private fun observeLiveData() {
-        viewModel.reposLiveData.observe(this, Observer<List<Repo>> {
-            it?.let { adapter.dataSource = it }
+        viewModel.reposLiveData2.observe(this, Observer<Repo> {
+            it?.let {
+                //adapter.dataSource = it
+                (rv.adapter as MainAdapter).addMovies(it.movies)
+            }
         })
         viewModel.throwableLiveData.observe(this, Observer<Throwable> {
             it?.let {
