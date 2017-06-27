@@ -1,21 +1,18 @@
 package com.mobile.persson.kotlinaac.data
 
 import com.mobile.persson.kotlinaac.BuildConfig.API_END_POINT
-import com.mobile.persson.kotlinaac.data.entity.Repo
+import com.mobile.persson.kotlinaac.data.response.Movies
 import io.reactivex.Single
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.http.GET
-import retrofit2.http.QueryMap
-
 /**
  * Created by luizfelipepersson on 21/06/17.
  */
 interface RemoteDataSource {
     @retrofit2.http.GET("discover/movie?api_key=6bbb854c2d718fdef1ea092e0f99f070&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1")
-    fun getRepos(): Single<List<Repo>>
+    fun getRepos(): Single<List<Movies>>
 
     @retrofit2.http.GET("discover/movie?api_key=6bbb854c2d718fdef1ea092e0f99f070&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1")
-    fun getRepos2(): Single<Repo>
+    fun getRepos2(): Single<Movies>
 
     companion object Factory {
         fun create(): RemoteDataSource {

@@ -1,11 +1,11 @@
-package com.mobile.persson.kotlinaac.data.entity
+package com.mobile.persson.kotlinaac.data.response
 
 import com.google.gson.annotations.SerializedName
 
 /**
  * Created by luizfelipepersson on 21/06/17.
  */
-data class Repo(
+data class Movies(
         @SerializedName("results")
         var movies: List<Movie>)
 

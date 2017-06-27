@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.mobile.persson.kotlinaac.R
-import com.mobile.persson.kotlinaac.data.entity.Movie
+import com.mobile.persson.kotlinaac.data.response.Movie
 import kotlinx.android.synthetic.main.view_item.view.*
 
 /**

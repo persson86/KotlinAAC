@@ -1,9 +1,5 @@
 package com.mobile.persson.kotlinaac.data
 
-import com.mobile.persson.kotlinaac.data.entity.Repo
-import com.mobile.persson.kotlinaac.repository.RepositoryDataSource
-import io.reactivex.Single
-
 /**
  * Created by luizfelipepersson on 22/06/17.
  */

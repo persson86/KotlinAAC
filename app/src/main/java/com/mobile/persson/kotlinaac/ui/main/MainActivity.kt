@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.mobile.persson.kotlinaac.R
 import com.mobile.persson.kotlinaac.base.BaseLifecycleActivity
-import com.mobile.persson.kotlinaac.data.entity.Repo
+import com.mobile.persson.kotlinaac.data.response.Movies
 
 class MainActivity : BaseLifecycleActivity<MainViewModel>() {
 
@@ -30,7 +30,7 @@ class MainActivity : BaseLifecycleActivity<MainViewModel>() {
     }
 
     private fun observeLiveData() {
-        viewModel.reposLiveData.observe(this, Observer<Repo> {
+        viewModel.reposLiveData.observe(this, Observer<Movies> {
             it?.let {
                 (rv.adapter as MainAdapter).addMovies(it.movies)
             }

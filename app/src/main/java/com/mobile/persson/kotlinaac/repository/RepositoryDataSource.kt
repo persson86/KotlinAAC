@@ -1,6 +1,6 @@
 package com.mobile.persson.kotlinaac.repository
 
-import com.mobile.persson.kotlinaac.data.entity.Repo
+import com.mobile.persson.kotlinaac.data.response.Movies
 import io.reactivex.Single
 
 /**
@@ -8,7 +8,7 @@ import io.reactivex.Single
  */
 interface RepositoryDataSource {
 
-    fun getRepos(): Single<List<Repo>>
+    fun getRepos(): Single<List<Movies>>
     //fun saveRepositories(list: List<Repo>): Unit = Unit
-    fun getRepos2(): Single<Repo>
+    fun getRepos2(): Single<Movies>
 }
