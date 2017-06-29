@@ -2,13 +2,17 @@ package com.mobile.persson.kotlinaac.data.db
 
 import com.mobile.persson.kotlinaac.data.db.model.MovieModel
 import com.vicpin.krealmextensions.*
+import io.reactivex.Flowable
+import io.reactivex.Single
 import io.realm.Realm
+import io.realm.RealmResults
+import rx.functions.Func1
 
 
 /**
  * Created by luizfelipepersson on 26/06/17.
  */
-class MovieDao {
+interface MovieDao {
     fun insertMovie(movie: MovieModel) = movie.save()
 
     fun insertMovies(movies: List<MovieModel>) = movies.saveAll()
@@ -17,8 +21,13 @@ class MovieDao {
 
     fun deleteAll() = MovieModel().deleteAll()
 
-    fun insertMovies2(movies: List<MovieModel>){
-        val realm: Realm = Realm.getDefaultInstance()
-        realm.copyToRealmOrUpdate(movies)
+    fun getAllMovies2(): Single<List<MovieModel>>
+}
+
+class test : MovieDao {
+    override fun getAllMovies2(): Single<List<MovieModel>> {
+        return MovieModel().queryAllAsync {
+
+        }
     }
 }

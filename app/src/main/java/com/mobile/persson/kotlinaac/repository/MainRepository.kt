@@ -16,8 +16,8 @@ import io.reactivex.schedulers.Schedulers
 class MainRepository : RepositoryDataSource {
 
     private val remoteDataSource = RemoteDataSource.Factory.create()
-    private val localDataSource = LocalDataSource()
-    private val test = MovieDao()
+    private val localDataSource2 = LocalDataSource()
+    private val localDataSource = MovieDao()
 
     override fun getRepos(): Single<List<Movies>>
             = /*localDataSource
@@ -35,26 +35,33 @@ class MainRepository : RepositoryDataSource {
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
 
-    override fun getRepos2(): Single<Movies>
-            = remoteDataSource.getRepos2()
-            .doOnSuccess {
-                val movies: MutableList<MovieModel> = java.util.ArrayList()
-                it.movies.forEach {
-                    val movie: MovieModel = MovieModel()
-                    movie.title = it.title
-                    movies.add(movie)
-                }
+    override fun getRepos2(): Single<Movies> {
 
+        //val localMovies = localDataSource.getAllMovies()
+        //if (localMovies.isEmpty()) {
+            return remoteDataSource.getRepos2()
+                    .doOnSuccess {
+                        val movies: MutableList<MovieModel> = java.util.ArrayList()
+                        val movie = MovieModel()
+                        it.movies.forEach {
+                            movie.title = it.title
+                            movies.add(movie)
+                        }
 
-                test.deleteAll()
-                test.insertMovies(movies)
-                val listTest: List<MovieModel> = test.getAllMovies()
+                        localDataSource.deleteAll()
+                        localDataSource.insertMovies(movies)
+                        Log.v("LFSP", "SUCESSO 2")
 
-                Log.v("LFSP", "SUCESSO 2")
+                    }
+                    .doOnError { Log.v("LFSP", "ERORR 2") }
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+        /*} else {
+            return localMovies
+        }*/
+    }
 
-            }
-            .doOnError { Log.v("LFSP", "ERORR 2") }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-
+    override fun getReposLocal(): List<MovieModel> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }

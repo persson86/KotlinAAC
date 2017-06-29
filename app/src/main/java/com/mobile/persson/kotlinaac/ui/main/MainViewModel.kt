@@ -2,9 +2,15 @@ package com.mobile.persson.kotlinaac.ui.main
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MediatorLiveData
+import android.arch.lifecycle.MutableLiveData
 import com.mobile.persson.kotlinaac.data.response.Movies
 import com.mobile.persson.kotlinaac.repository.MainRepository
+import io.reactivex.Flowable
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by luizfelipepersson on 21/06/17.
