@@ -39,7 +39,12 @@ class MainRepository : RepositoryDataSource {
 
         //val localMovies = localDataSource.getAllMovies()
         //if (localMovies.isEmpty()) {
-            return remoteDataSource.getRepos2()
+
+
+
+            val localMovies = localDataSource.getAllMovies()
+
+            val remoteMovies =  remoteDataSource.getRepos2()
                     .doOnSuccess {
                         val movies: MutableList<MovieModel> = java.util.ArrayList()
                         val movie = MovieModel()
@@ -56,12 +61,14 @@ class MainRepository : RepositoryDataSource {
                     .doOnError { Log.v("LFSP", "ERORR 2") }
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-        /*} else {
-            return localMovies
-        }*/
+
+
+
+        return remoteMovies
+
     }
 
-    override fun getReposLocal(): List<MovieModel> {
+    override fun getReposLocal(): Single<List<MovieModel>> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

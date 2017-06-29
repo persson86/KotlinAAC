@@ -4,30 +4,30 @@ import com.mobile.persson.kotlinaac.data.db.model.MovieModel
 import com.vicpin.krealmextensions.*
 import io.reactivex.Flowable
 import io.reactivex.Single
+import io.reactivex.internal.operators.flowable.FlowableConcatMap
 import io.realm.Realm
 import io.realm.RealmResults
 import rx.functions.Func1
+import java.util.*
 
 
 /**
  * Created by luizfelipepersson on 26/06/17.
  */
-interface MovieDao {
+class MovieDao {
     fun insertMovie(movie: MovieModel) = movie.save()
 
     fun insertMovies(movies: List<MovieModel>) = movies.saveAll()
 
-    fun getAllMovies(): List<MovieModel> = MovieModel().queryAll()
+    fun getAllMovies(): Single<List<MovieModel>>
+            = Single.fromCallable<List<MovieModel>> {
+        Realm.getDefaultInstance().use {
+            realm ->
+            return@fromCallable realm.copyFromRealm<MovieModel>(realm.where(MovieModel::class.java).findAll())
+        }
+    }
+    //MovieModel().queryAll()
 
     fun deleteAll() = MovieModel().deleteAll()
 
-    fun getAllMovies2(): Single<List<MovieModel>>
-}
-
-class test : MovieDao {
-    override fun getAllMovies2(): Single<List<MovieModel>> {
-        return MovieModel().queryAllAsync {
-
-        }
-    }
 }

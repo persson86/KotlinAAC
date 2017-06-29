@@ -10,7 +10,7 @@ import io.reactivex.Single
 /**
  * Created by luizfelipepersson on 22/06/17.
  */
-class LocalDataSource : RepositoryDataSource {
+class LocalDataSource{ /*: RepositoryDataSource {
 
     val movieDao = MovieDao()
 
@@ -24,7 +24,7 @@ class LocalDataSource : RepositoryDataSource {
 
     override fun getRepos2(): Single<Movies> {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    }*/
 
 /*
     override fun getRepositories(organization: String): Single<List<Repo>>
